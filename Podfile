@@ -1,25 +1,16 @@
-platform :ios, '8.0'
+platform :ios, '9.0'
 source 'https://github.com/CocoaPods/Specs.git'
 
 use_frameworks!
-target 'Atlas Messenger' do
+target 'XDK Messenger' do
 
-  if ENV['LAYER_USE_UI_SDK_SUBMODULE'].blank? then
-    pod 'Atlas'
-  else
-    pod 'Atlas', path: 'Libraries/Atlas'
-  end
-  
-  if !ENV['LAYER_USE_CORE_SDK_LOCATION'].blank? then
-    source 'git@github.com:layerhq/cocoapods-specs.git'
-    pod 'LayerKit', path: ENV['LAYER_USE_CORE_SDK_LOCATION']
-  end
-  
+  pod 'LayerXDK/UI', '= 1.0.0-pre1'
+  pod 'LayerKit', '= 1.0.0-pre1'
   pod 'SVProgressHUD'
   pod 'ClusterPrePermissions', '~> 0.1'
   pod 'LayerKitDiagnostics'
-  
-  target 'Atlas MessengerTests' do
+
+  target 'XDK MessengerTests' do
       inherit! :search_paths
       pod 'Expecta'
       pod 'OCMock'

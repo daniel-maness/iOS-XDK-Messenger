@@ -60,7 +60,7 @@ echo "Atlas Messenger has been installed in your Downloads directory ($INSTALL_D
 # Update the generic XCode project with your App ID
 if [[ "$1" =~ [0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12} ]]; then
 	echo "2. Injecting App ID: $1 in the project"	
-	sed -i '' -e "s#ATLMLayerAppID \= nil#ATLMLayerAppID = \@\"$1\"#" $INSTALL_DIR/Code/ATLMAppDelegate.m	
+	sed -i '' -e "s#LYRMLayerAppID \= nil#LYRMLayerAppID = \@\"$1\"#" $INSTALL_DIR/Code/LYRMAppDelegate.m
 else
 	echo "2: Skipping Step - No Valid App ID provided."	
 fi

@@ -1,2 +1,3 @@
-scheme "Atlas Messenger"
-device "iPhone 6"
+scheme "XDK Messenger"
+device "iPhone 7"
+include_simulator_logs false

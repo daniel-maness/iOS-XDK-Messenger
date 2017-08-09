@@ -1,6 +1,6 @@
 //
 //  main.m
-//  Atlas Messenger
+//  XDK Messenger
 //
 //  Created by Kevin Coleman on 6/10/14.
 //  Copyright (c) 2014 Layer, Inc. All rights reserved.
@@ -19,12 +19,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ATLMAppDelegate.h"
+#import "LYRMAppDelegate.h"
 
 int main(int argc, char * argv[])
 {
     @autoreleasepool {
-        Class appDelegateClass = NSClassFromString(@"ATLAppDelegate") ?: [ATLMAppDelegate class];
+        Class appDelegateClass = NSClassFromString(@"ATLAppDelegate") ?: [LYRMAppDelegate class];
         return UIApplicationMain(argc, argv, nil, NSStringFromClass(appDelegateClass));
     }
 }

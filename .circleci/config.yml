@@ -1,0 +1,45 @@
+version: 2
+
+jobs:
+  test:
+    macos:
+      xcode: "9.0"
+    shell: /bin/bash --login -eo pipefail
+
+    steps:
+      - checkout
+      - run:
+          name: Install Bundle
+          command: bundle install
+      - run:
+          name: Install CocoaPods
+          command: pod install
+      - run:
+          name: Run Tests
+          command: bundle exec fastlane test
+
+  deployment:
+    macos:
+      xcode: "9.0"
+    shell: /bin/bash --login -eo pipefail
+
+    steps:
+      - run:
+          name: Deploy App
+          command: bundle exec fastlane deploy
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - test
+      - approve-deployment:
+          type: approval
+          requires:
+           - test
+      - deployment:
+          requires:
+            - approve-deployment
+          filters:
+            branches:
+              only: master

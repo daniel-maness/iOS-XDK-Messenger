@@ -1,5 +1,5 @@
 //
-//  ATLMTestUser.m
+//  LYRMTestUser.m
 //  Atlas Messenger
 //
 //  Created by Kevin Coleman on 6/30/14.
