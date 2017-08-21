@@ -166,7 +166,9 @@ NSString *const ATLMPresenceStatusKey = @"presenceStatus";
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [self.layerClient.authenticatedUser removeObserver:self forKeyPath:ATLMPresenceStatusKey];
+    if (self.layerClient.authenticatedUser) {
+        [self.layerClient.authenticatedUser removeObserver:self forKeyPath:ATLMPresenceStatusKey];
+    }
 }
 
 #pragma mark - UITableViewDataSource
