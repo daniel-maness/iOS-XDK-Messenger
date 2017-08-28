@@ -1,5 +1,11 @@
 # Atlas Messenger Changelog
 
+## 1.2.0
+
+### Enhancements
+
+* Refactored the authentication flow to better handle race conditions between connecting and authenticating that could leave the app in a `Challenged` state.
+
 ## 1.1.2
 
 ### Enhancements
