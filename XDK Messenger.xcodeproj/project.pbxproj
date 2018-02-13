@@ -23,6 +23,7 @@
 		0AADB5D01947C8800083732B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AADB5CF1947C8800083732B /* Security.framework */; };
 		0AADB5D41947C88B0083732B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AADB5D31947C88B0083732B /* SystemConfiguration.framework */; };
 		0ABEFFAF196B7686006FFFF3 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ABEFFAE196B7686006FFFF3 /* logo@2x.png */; };
+		1518DA0B2033301200654309 /* TestLayerConfiguration-customIdentityProvider.json in Resources */ = {isa = PBXBuildFile; fileRef = 1518DA092033300B00654309 /* TestLayerConfiguration-customIdentityProvider.json */; };
 		15D7A48F2024B4FD0087A2BE /* LYRMCenterTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D7A48B2024B4FD0087A2BE /* LYRMCenterTextTableViewCell.m */; };
 		15D7A4902024B4FD0087A2BE /* LYRMStyleValue1TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D7A48E2024B4FD0087A2BE /* LYRMStyleValue1TableViewCell.m */; };
 		15D7A4932024BB020087A2BE /* LYRMStartConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D7A4922024BB020087A2BE /* LYRMStartConversationViewController.m */; };
@@ -105,6 +106,7 @@
 		0AB05019196E24F00029BC1B /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		0ABEFFAE196B7686006FFFF3 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		107C809C93510CA35B6BAC1B /* Pods_XDK_MessengerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XDK_MessengerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1518DA092033300B00654309 /* TestLayerConfiguration-customIdentityProvider.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "TestLayerConfiguration-customIdentityProvider.json"; sourceTree = "<group>"; };
 		152B771A1F79612900AE1C74 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
 		15D7A48B2024B4FD0087A2BE /* LYRMCenterTextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYRMCenterTextTableViewCell.m; sourceTree = "<group>"; };
 		15D7A48C2024B4FD0087A2BE /* LYRMCenterTextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYRMCenterTextTableViewCell.h; sourceTree = "<group>"; };
@@ -479,6 +481,7 @@
 				D0C483D61E553E5300DB02CF /* TestLayerConfiguration-invalid.json */,
 				409121191E45127200CB0BBE /* TestLayerConfiguration.json */,
 				402A39F01E68FA180033EEF8 /* TestLayerConfiguration-nameNotString.json */,
+				1518DA092033300B00654309 /* TestLayerConfiguration-customIdentityProvider.json */,
 				402EC5411E673EA0003238BE /* TestLayerConfiguration-notArray.json */,
 			);
 			path = Utilities;
@@ -631,6 +634,7 @@
 				D0C483DC1E55413800DB02CF /* TestLayerConfiguration-identityProviderURLNotSet.json in Resources */,
 				D0C483DA1E55408100DB02CF /* TestLayerConfiguration-appIDNotSet.json in Resources */,
 				D0C483D81E553F8D00DB02CF /* TestLayerConfiguration-invalid.json in Resources */,
+				1518DA0B2033301200654309 /* TestLayerConfiguration-customIdentityProvider.json in Resources */,
 				D0C483E31E55428000DB02CF /* TestLayerConfiguration-identityProviderURLNull.json in Resources */,
 				D0C483E21E55428000DB02CF /* TestLayerConfiguration-identityProviderURLInvalid.json in Resources */,
 				D0C483E11E55428000DB02CF /* TestLayerConfiguration-appIDInvalid.json in Resources */,

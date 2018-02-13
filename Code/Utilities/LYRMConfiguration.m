@@ -22,6 +22,7 @@
 NSString *const LYRMConfigurationNameKey = @"name";
 NSString *const LYRMConfigurationAppIDKey = @"app_id";
 NSString *const LYRMConfigurationIdentityProviderURLKey = @"identity_provider_url";
+NSString *const LYRMConfigurationIdentityProviderEndpoint = @"authenticate";
 
 @implementation LYRMConfiguration
 
@@ -95,7 +96,7 @@ NSString *const LYRMConfigurationIdentityProviderURLKey = @"identity_provider_ur
     if ((id)identityProviderURLString == [NSNull null]) {
         [NSException raise:NSInternalInconsistencyException format:@"Failed to initialize `%@` because `identity_provider_url` key value in the input file was `null`.", self.class];
     }
-    _identityProviderURL = [NSURL URLWithString:identityProviderURLString];
+    _identityProviderURL = [self identityProviderURLWithString:identityProviderURLString];
     if (!_identityProviderURL) {
         [NSException raise:NSInternalInconsistencyException format:@"Failed to initialize `%@` because `identity_provider_url` key value in the input file was not a valid URL. identityProviderURL='%@'", self.class, identityProviderURLString];
     }
@@ -108,6 +109,14 @@ NSString *const LYRMConfigurationIdentityProviderURLKey = @"identity_provider_ur
     @throw [NSException exceptionWithName:NSInternalInconsistencyException
                                    reason:[NSString stringWithFormat:@"Failed to call designated initializer. Call the designated initializer '%@' on the `%@` instead.", NSStringFromSelector(@selector(initWithFileURL:)), self.class]
                                  userInfo:nil];
+}
+
+- (NSURL *)identityProviderURLWithString:(NSString *)identityProviderURLString {
+    NSURL *URL = [NSURL URLWithString:identityProviderURLString];
+    if (URL.path.length > 0) {
+        return URL;
+    }
+    return [URL URLByAppendingPathComponent:LYRMConfigurationIdentityProviderEndpoint];
 }
 
 @end
