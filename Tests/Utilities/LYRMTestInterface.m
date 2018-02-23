@@ -45,7 +45,7 @@
         LYRMLayerClient *client = [LYRMLayerClient clientWithAppID:appID];
         _applicationController.layerClient = client;
         
-        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"LayerConfiguration.json" withExtension:nil];
+        NSURL *fileURL = [[NSBundle bundleForClass:[self class]] URLForResource:@"TestLayerConfiguration.json" withExtension:nil];
         LYRMConfiguration *configuration = [[LYRMConfiguration alloc] initWithFileURL:fileURL];
         
         LYRMAPIManager *manager = [LYRMAPIManager managerWithBaseURL:(configuration.identityProviderURL ?: LYRMRailsBaseURL(LYRMEnvironmentProduction)) layerClient:client];
@@ -178,7 +178,7 @@
     NSParameterAssert(nonce);
     NSParameterAssert(completion);
     
-    NSURL *identityTokenURL = [NSURL URLWithString:@"https://layer-identity-provider.herokuapp.com/identity_tokens"];
+    NSURL *identityTokenURL = [NSURL URLWithString:@"https://test.herokuapp.com/authenticate];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:identityTokenURL];
     request.HTTPMethod = @"POST";
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -205,7 +205,7 @@
         }
         else
         {
-            NSString *domain = @"layer-identity-provider.herokuapp.com";
+            NSString *domain = @"test.herokuapp.com";
             NSInteger code = [responseObject[@"status"] integerValue];
             NSDictionary *userInfo =
             @{

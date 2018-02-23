@@ -131,7 +131,15 @@ NSURL *LYRMConfigurationTestsDefaultConfigurationPath(NSString *__nullable suffi
 {
     LYRMConfiguration *configuration = [[LYRMConfiguration alloc] initWithFileURL:LYRMConfigurationTestsDefaultConfigurationPath(nil)];
     expect(configuration.appID.absoluteString).to.equal(@"layer:///apps/staging/test");
-    expect(configuration.identityProviderURL.absoluteString).to.equal(@"https://test.herokuapp.com");
+    expect(configuration.identityProviderURL.absoluteString).to.equal(@"https://test.herokuapp.com/authenticate");
+    expect(configuration.name).to.equal(@"TestApp");
+}
+
+- (void)testInitSuccessfullyDeserializesValidConfigurationFileWithCustomIdentityProvider
+{
+    LYRMConfiguration *configuration = [[LYRMConfiguration alloc] initWithFileURL:LYRMConfigurationTestsDefaultConfigurationPath(@"customIdentityProvider")];
+    expect(configuration.appID.absoluteString).to.equal(@"layer:///apps/staging/test");
+    expect(configuration.identityProviderURL.absoluteString).to.equal(@"https://test.herokuapp.com/users/sign_in.json");
     expect(configuration.name).to.equal(@"TestApp");
 }
 
