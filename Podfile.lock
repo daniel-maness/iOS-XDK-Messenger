@@ -6,11 +6,11 @@ PODS:
   - KIF/Core (3.6.0)
   - KIFViewControllerActions (1.0.2):
     - KIF (>= 2.0.0)
-  - LayerKit (1.0.0-pre1)
+  - LayerKit (1.0.0-pre2)
   - LayerKitDiagnostics (1.0.0):
     - LayerKit (>= 0.22.0)
-  - LayerXDK/UI (1.0.0-pre1):
-    - LayerKit (= 1.0.0-pre1)
+  - LayerXDK/UI (1.0.0-pre2):
+    - LayerKit (= 1.0.0-pre2)
   - LYRCountDownLatch (0.9.0)
   - OCMock (3.4.1)
   - SVProgressHUD (2.2.2)
@@ -20,9 +20,9 @@ DEPENDENCIES:
   - Expecta
   - KIF
   - KIFViewControllerActions (from `https://github.com/blakewatters/KIFViewControllerActions.git`)
-  - LayerKit (= 1.0.0-pre1)
+  - LayerKit (= 1.0.0-pre2)
   - LayerKitDiagnostics
-  - LayerXDK/UI (= 1.0.0-pre1)
+  - LayerXDK/UI (= 1.0.0-pre2)
   - LYRCountDownLatch
   - OCMock
   - SVProgressHUD
@@ -41,13 +41,13 @@ SPEC CHECKSUMS:
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
   KIF: bd770edd8ce49bc7308501e4871e58a02d137be3
   KIFViewControllerActions: 923795dc4bd4ca5657841ce7455ce67447693861
-  LayerKit: 95b2a65d976b137db1026e7852c1803795890fa9
+  LayerKit: 57228d59f2036a8c81e8c871fdaeffb1ad7740e0
   LayerKitDiagnostics: cb0c1ac160ef4028b7d12f969bb46e1affe8a7f1
-  LayerXDK: 4bf8d4cb4e7c1362966cfa999642936eb182695b
+  LayerXDK: 3bd269d6f07be01e7ab9d3e454b31c46ddd85878
   LYRCountDownLatch: 72a444f729ca5a8c6157c0b58f335a44e6702b48
   OCMock: 2cd0716969bab32a2283ff3a46fd26a8c8b4c5e3
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
 
-PODFILE CHECKSUM: 0da8fa921852172a1027bba4af554935144072a0
+PODFILE CHECKSUM: 4a94337a945cb7638a42f56cf60a76961d48c49e
 
 COCOAPODS: 1.4.0
