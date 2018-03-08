@@ -23,9 +23,10 @@ platform :ios do
   desc "Deploys XDK Messenger to HockeyApp"
   lane :deploy do
     configureApp
+    prepareChangelog
     match(type: "enterprise")
     gym(export_method: "enterprise")
-    hockey(notes: File.read("../CHANGELOG.md"))
+    hockey(notes: File.read("../VERSION-CHANGELOG.md"))
   end
 
   def configureApp
@@ -42,5 +43,25 @@ platform :ios do
       f.write configuration
     end
     puts "Done. Successfully configured XDK Messenger"
+  end
+
+  def prepareChangelog
+    version = `/usr/libexec/PlistBuddy -c \"print :CFBundleShortVersionString\" ../Resources/Info.plist`
+
+    should_print = false
+    File.open("../VERSION-CHANGELOG.md", 'w') { |file|
+      File.open("../CHANGELOG.md").each do |line|
+        if line == "\#\# #{version}"
+          should_print = true
+          next
+        end
+        if should_print
+          if line.start_with?("\#\# ")
+            break
+          end
+          file.write(line)
+        end
+      end
+    }
   end
 end
