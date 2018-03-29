@@ -279,35 +279,6 @@ NSString *const LYRMDetailsButtonLabel = @"Details";
 
 - (void)registerNotificationObservers {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(conversationMetadataDidChange:) name:LYRMConversationMetadataDidChangeNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-}
-
-#pragma mark - Keyboard handling
-
-- (void)keyboardWillShow:(NSNotification *)notification {
-    CGRect keyboardEndFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    [self setViewSizeForKeyboardHeight:keyboardEndFrame.size.height];
-}
-
-- (void)keyboardWillHide:(NSNotification *)notification {
-    [self setViewSizeForKeyboardHeight:0];
-}
-
-- (void)setViewSizeForKeyboardHeight:(CGFloat)keyboardHeight {
-    CGSize screenSize = [UIApplication sharedApplication].keyWindow.bounds.size;
-    CGFloat height = screenSize.height - keyboardHeight;
-    
-    UICollectionView *collectionView = self.conversationView.messageListView.collectionView;
-    CGFloat bottomOffset = collectionView.contentSize.height - (collectionView.contentOffset.y + CGRectGetHeight(collectionView.bounds));
-    CGFloat margins = CGRectGetHeight(self.view.frame) - CGRectGetHeight(collectionView.bounds);
-    
-    CGRect viewFrame = self.view.frame;
-    viewFrame.size.height = height;
-    self.view.frame = viewFrame;
-    
-    CGFloat newOffset = collectionView.contentSize.height - (height - margins) - bottomOffset;
-    [collectionView setContentOffset:CGPointMake(0, newOffset) animated:NO];
 }
 
 #pragma mark - UIActionSheetDelegate
