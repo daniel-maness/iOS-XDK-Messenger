@@ -561,7 +561,7 @@
 						DevelopmentTeam = U46UP347QQ;
 						DevelopmentTeamName = "Layer, Inc.";
 						LastSwiftMigration = 0820;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -919,6 +919,7 @@
 				CODE_SIGN_ENTITLEMENTS = "XDK Messenger.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = U46UP347QQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/Libraries",
@@ -954,8 +955,9 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "XDK Messenger.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = U46UP347QQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/Libraries",
@@ -975,8 +977,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.layer.XDK-Messenger";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "67618af8-d0fe-45b2-b613-b98225867ec2";
+				PROVISIONING_PROFILE_SPECIFIER = "XDK Messenger Distribution";
 				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};

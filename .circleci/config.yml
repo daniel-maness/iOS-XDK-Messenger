@@ -24,6 +24,13 @@ jobs:
     shell: /bin/bash --login -eo pipefail
 
     steps:
+      - checkout
+      - run:
+          name: Install Bundle
+          command: bundle install
+      - run:
+          name: Install CocoaPods
+          command: pod install
       - run:
           name: Deploy App
           command: bundle exec fastlane deploy
@@ -37,6 +44,9 @@ workflows:
           type: approval
           requires:
            - test
+          filters:
+            branches:
+              only: master
       - deployment:
           requires:
             - approve-deployment

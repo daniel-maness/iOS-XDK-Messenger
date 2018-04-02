@@ -4,7 +4,7 @@ platform :ios do
   skip_docs
 
   before_all do
-    # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
+    setup_circle_ci
   end
 
   desc "Runs all the tests"
@@ -13,21 +13,20 @@ platform :ios do
     scan
   end
 
+  desc "Archives XDK Messenger"
+  lane :archive do
+    configureApp
+    match(type: "enterprise")
+    gym(export_method: "enterprise")
+  end
+
   desc "Deploys XDK Messenger to HockeyApp"
   lane :deploy do
     configureApp
-    cert
-    sigh
-
-    # Circle CI handles setting the CODE_SIGN_IDENTITY
-    gym(
-      xcargs: {
-        :PROVISIONING_PROFILE => ENV["LYRM_PROVISIONING_PROFILE"]
-      }
-    )
-    hockey(
-      notes: File.read("../CHANGELOG.md")
-    )
+    prepareChangelog
+    match(type: "enterprise")
+    gym(export_method: "enterprise")
+    hockey(notes: File.read("../VERSION-CHANGELOG.md"))
   end
 
   def configureApp
@@ -44,5 +43,25 @@ platform :ios do
       f.write configuration
     end
     puts "Done. Successfully configured XDK Messenger"
+  end
+
+  def prepareChangelog
+    version = `/usr/libexec/PlistBuddy -c \"print :CFBundleShortVersionString\" ../Resources/Info.plist`
+
+    should_print = false
+    File.open("../VERSION-CHANGELOG.md", 'w') { |file|
+      File.open("../CHANGELOG.md").each do |line|
+        if line == "\#\# #{version}"
+          should_print = true
+          next
+        end
+        if should_print
+          if line.start_with?("\#\# ")
+            break
+          end
+          file.write(line)
+        end
+      end
+    }
   end
 end
