@@ -4,8 +4,8 @@ source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 target 'XDK Messenger' do
 
-  pod 'LayerXDK/UI', '= 1.0.0-pre2'
-  pod 'LayerKit', '= 1.0.0-pre2'
+  pod 'LayerXDK/UI', '= 4.0.0'
+  pod 'LayerKit', '= 4.0.0'
   pod 'SVProgressHUD'
   pod 'ClusterPrePermissions', '~> 0.1'
   pod 'LayerKitDiagnostics'
