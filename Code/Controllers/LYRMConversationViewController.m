@@ -39,6 +39,7 @@
 @property (nonatomic) BOOL shouldShareLocation;
 
 @property (nonatomic) BOOL shouldScrollToLastMessage;
+@property (nonatomic) dispatch_once_t onceToken;
 
 @end
 
@@ -92,10 +93,12 @@ NSString *const LYRMDetailsButtonLabel = @"Details";
     [super viewDidAppear:animated];
     
     if (self.conversation == nil) {
-        LYRMStartConversationViewController *startConversationViewController = [[LYRMStartConversationViewController alloc] initWithLayerUIConfiguration:self.layerUIConfiguration];
-        startConversationViewController.delegate = self;
-        UINavigationController *navigationViewController = [[UINavigationController alloc] initWithRootViewController:startConversationViewController];
-        [self presentViewController:navigationViewController animated:YES completion:nil];
+        dispatch_once(&_onceToken, ^{
+            LYRMStartConversationViewController *startConversationViewController = [[LYRMStartConversationViewController alloc] initWithLayerUIConfiguration:self.layerUIConfiguration];
+            startConversationViewController.delegate = self;
+            UINavigationController *navigationViewController = [[UINavigationController alloc] initWithRootViewController:startConversationViewController];
+            [self presentViewController:navigationViewController animated:YES completion:nil];
+        });
     }
     
     if (self.shouldScrollToLastMessage) {

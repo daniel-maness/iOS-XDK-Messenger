@@ -114,11 +114,6 @@
     LYRConversation *conversation = [self existingConversationForParticipants:participantIdentifiers];
     if (!conversation) {
         conversation = [self.layerUIConfiguration.client newConversationWithParticipants:participantIdentifiers options:nil error:nil];
-        LYRUIMessageSender *messageSender = [[LYRUIMessageSender alloc] initWithConfiguration:self.layerUIConfiguration];
-        messageSender.conversation = conversation;
-        NSString *userName = self.layerUIConfiguration.client.authenticatedUser.displayName;
-        LYRUIStatusMessage *statusMessage = [[LYRUIStatusMessage alloc] initWithText:[NSString stringWithFormat:@"%@ started conversation", userName]];
-        [messageSender sendMessage:statusMessage];
     }
     return conversation;
 }
