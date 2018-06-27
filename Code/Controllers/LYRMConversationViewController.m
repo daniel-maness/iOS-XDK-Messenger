@@ -24,9 +24,15 @@
 #import "LYRMParticipantTableViewController.h"
 #import "LYRMLayerController.h"
 #import "LYRMStartConversationViewController.h"
+#import "LYRMMessageSender.h"
+
 #import <CoreLocation/CoreLocation.h>
 #import <LayerKit/LayerKit.h>
 #import <LayerXDK/LayerXDKUI.h>
+
+#import "LYRUIImageMessage.h"
+#import "LYRUIImageMessageSerializer.h"
+#import "LYRUIImageMessageContentViewPresenter.h"
 
 @interface LYRMConversationViewController () <CLLocationManagerDelegate, UIActionSheetDelegate,
                                               UINavigationControllerDelegate, UIImagePickerControllerDelegate,
@@ -34,6 +40,7 @@
 
 @property (nonatomic) LYRUIConfiguration *layerUIConfiguration;
 @property (nonatomic, readwrite) LYRConversation *conversation;
+@property (nonatomic) LYRMMessageSender *customMessageSender;
 
 @property (nonatomic) CLLocationManager *locationManager;
 @property (nonatomic) BOOL shouldShareLocation;
@@ -59,6 +66,7 @@ NSString *const LYRMDetailsButtonLabel = @"Details";
     if (self)  {
         _conversation = conversation;
         _layerUIConfiguration = layerUIConfiguration;
+        _customMessageSender = [[LYRMMessageSender alloc] initWithConfiguration:layerUIConfiguration];
         self.shouldScrollToLastMessage = YES;
     }
     return self;
@@ -76,6 +84,7 @@ NSString *const LYRMDetailsButtonLabel = @"Details";
    
     if (self.conversation) {
         self.conversationView.conversation = self.conversation;
+        self.customMessageSender.conversation = self.conversation;
         [self configureTitle];
         [self addDetailsButton];
     }
@@ -319,7 +328,7 @@ NSString *const LYRMDetailsButtonLabel = @"Details";
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     if (info[UIImagePickerControllerOriginalImage]) {
         // Image picked from the image picker.
-        [self.conversationView.messageListView.messageSender sendMessageWithImage:info[UIImagePickerControllerOriginalImage]];
+        [self.customMessageSender sendMessageWithImage:info[UIImagePickerControllerOriginalImage]];
     } else {
         return;
     }
@@ -348,6 +357,7 @@ NSString *const LYRMDetailsButtonLabel = @"Details";
     
     self.conversation = conversation;
     self.conversationView.conversation = self.conversation;
+    self.customMessageSender.conversation = self.conversation;
     [self.conversationView.messageListView scrollToLastMessageAnimated:NO];
     [self configureTitle];
     [self addDetailsButton];

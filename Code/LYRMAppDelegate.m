@@ -30,6 +30,11 @@
 #import "LYRMAuthenticationProvider.h"
 #import "LYRMApplicationViewController.h"
 #import "LYRMConfiguration.h"
+#import "LYRMMessageSelectImageActionHandler.h"
+#import "LYRMImageMessage.h"
+#import "LYRMMessageSender.h"
+#import "LYRUIImageMessageContentViewPresenter.h"
+#import "LYRUIImageMessageSerializer.h"
 
 @interface LYRMAppDelegate () <LYRMLayerControllerDelegate>
 
@@ -91,6 +96,8 @@
     layerConfiguration.canOpenURL = ^BOOL(NSURL *URL) {
         return [[UIApplication sharedApplication] canOpenURL:URL];
     };
+    [layerConfiguration registerMessageTypeClass:[LYRMImageMessage class] withSerializerClass:[LYRUIImageMessageSerializer class] contentPresenterClass:[LYRUIImageMessageContentViewPresenter class]];
+    [layerConfiguration registerActionHandlerClass:[LYRMMessageSelectImageActionHandler class] forEvent:@"select-image" messageTypeClass:[NSObject class]];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
